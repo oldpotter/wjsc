@@ -4,11 +4,15 @@ import { Conversation } from '../../models/conversation'
 
 Page(Object.assign({}, Zan.TopTips, {
 	data: {
-		content: undefined,
-		images: undefined,
+		content: undefined,//中文内容
+		englishContent: undefined,//英语内容
+		images: undefined,//图片数组
+
+		switchValue: false,
 		uploadTask: undefined,
 		progress: undefined,
 		imageUrl: undefined,//上传后的图片地址
+		categories: [{ name: '每日对话', checked: true }, { name: '笑译', checked: false },]
 	},
 
 	onUnload() {
@@ -111,6 +115,31 @@ Page(Object.assign({}, Zan.TopTips, {
 			uploadTask: null,
 			progress: null,
 			imageUrl: null,//上传后的图片地址
+		})
+	},
+
+	//英语开关
+	onSwitchChange(event) {
+		//detail.value
+		this.setData({
+			switchValue: event.detail.value
+		})
+	},
+
+	//类型修改
+	onRadioChange(event) {
+		const _this = this
+		const index = event.detail.value
+		if (this.data.categories[index].checked) {
+			return
+		}
+		// this.data.categories[index].checked = !this.data.categories[index].checked
+		// this.data.categories[1 - index].checked = !this.data.categories[1 - index].checked
+		const param1 = `categories[${index}].checked`
+		const param2 = `categories[${1 - index}].checked`
+		this.setData({
+			[param1]: !_this.data.categories[index].checked,
+			[param2]: !_this.data.categories[1 - index].checked
 		})
 	},
 }))

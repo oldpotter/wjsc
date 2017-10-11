@@ -2,6 +2,7 @@ const observer = require('../../plugins/observer').observer
 const extendObservable = require('../../plugins/mobx').extendObservable
 import { Conversation } from '../../models/conversation'
 import { contents, images } from '../../resources/resource'
+const config = require('../../config')
 
 Page(observer({
 	props: {
@@ -9,28 +10,31 @@ Page(observer({
 	},
 
 	data: {
-		sizes: [],
-		conversations: [],
-		width: 0,
-		height: 0,
-		screenWidth: 0,
+		sizes: undefined,
+		conversations: undefined,
+		width: undefined,
+		height: undefined,
+		screenWidth: undefined,
 	},
 
 	onLoad() {
+		const _this = this
+		//获取设备屏幕宽度
 		this.setData({
 			screenWidth: wx.getSystemInfoSync().screenWidth
 		})
-
-		let arr = []
-		for (let i = 0; i < 10; i++) {
-			const randomNum = Math.floor(Math.random() * (4 - 0 + 1)) + 0
-			const imageUrl = `../../resources/${images[randomNum]}.jpeg`
-			const content = contents[randomNum]
-			const conversation = new Conversation(i, imageUrl, content)
-			arr.push(conversation)
-		}
-		this.setData({
-			conversations: arr
+		wx.request({
+			url: config.service.getConversationsUrl,
+			success: function (res) {
+				if (res.data.code == 0) {
+					console.log(res)
+					const conversations = res.data.data.map(value=>JSON.parse(value.detail))
+					_this.setData({
+						conversations: conversations
+					})
+				}
+			},
+			fail: function (res) { },
 		})
 	},
 
@@ -40,7 +44,7 @@ Page(observer({
 		let width = event.detail.width
 		let height = event.detail.height
 		const ratio = width / height
-		width = this.data.screenWidth * 0.7
+		width = this.data.screenWidth * 0.8
 		height = width / ratio
 		const paramWidth = `conversations[${index}].width`
 		const paramHeight = `conversations[${index}].height`

@@ -1,16 +1,18 @@
 const config = require('../config')
 const mysql = require('../tools/mysql')('wujingshucha')
 const { uploader } = require('../qcloud')
+const table = 'conversation'
 
+//上传图片
 async function uploadImage(ctx, next) {
 	const data = await uploader(ctx.req)
 	ctx.state.data = data
 }
 
+//上传对话
 async function newConversation(ctx, next) {
 	let conversation = JSON.stringify(ctx.request.body)
 	let conversationId
-	const table = 'conversation'
 	await mysql(table)
 		.insert({ detail: conversation })
 		.then(ids => mysql(table).where('id', ids[0]).select())
@@ -31,7 +33,15 @@ async function newConversation(ctx, next) {
 		})
 }
 
+//获取对话
+async function getConversations(ctx,next){
+	const indexId = ctx.request.body
+	await mysql(table).select()
+	.then(res=>ctx.state.data = res)
+}
+
 module.exports = {
 	uploadImage,
-	newConversation
+	newConversation,
+	getConversations
 }
