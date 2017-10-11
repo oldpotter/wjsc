@@ -1,0 +1,6 @@
+<template name='conversation'>
+  <view class='conversation-container'>
+    <image class='conversation-image' style='width:{{width}}px;height:{{height}}px' src='{{imageUrl}}' mode='aspectFit' bindload='onImageLoad' data-index='{{index}}'></image>
+    <text class='conversation-content'>{{content}}</text>
+  </view>
+</template>

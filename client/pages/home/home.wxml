@@ -1,0 +1,10 @@
+<import src='../../views/conversation.wxml'/>
+<swiper class='swiper'>
+	<block wx:for='{{conversations}}'>
+		<swiper-item class='swiper-item'>
+			<view class='center'>
+				  <template is='conversation' data='{{index,...item}}'/>  
+			</view>
+		</swiper-item>
+	</block>
+</swiper>

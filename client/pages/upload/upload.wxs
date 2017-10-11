@@ -1,0 +1,22 @@
+//确定按钮是否可用
+var isValid = function (content, imageUrl) {
+	return content && content.trim().length > 0 && imageUrl
+}
+
+var imageState = function (progress) {
+	if (progress && progress == -1) {
+		return IMAGE_STATE_ERROR
+	} else if (progress > 0 && progress < 100) {
+		return IMAGE_STATE_UPLOADING
+	}
+}
+
+var IMAGE_STATE_ERROR = 'IMAGE_STATE_ERROR'
+var IMAGE_STATE_UPLOADING = 'IMAGE_STATE_UPLOADING'
+
+module.exports = {
+	isValid: isValid,
+	imageState: imageState,
+	IMAGE_STATE_ERROR: IMAGE_STATE_ERROR,
+	IMAGE_STATE_UPLOADING: IMAGE_STATE_UPLOADING
+}

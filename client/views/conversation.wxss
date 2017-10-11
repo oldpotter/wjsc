@@ -1,0 +1,14 @@
+.conversation-container {
+  border: 1rpx solid lightgray;
+  border-radius: 25rpx;
+	padding: 15rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.conversation-image {
+}
+
+.conversation-content {
+}

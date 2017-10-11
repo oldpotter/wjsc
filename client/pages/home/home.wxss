@@ -1,0 +1,17 @@
+/* pages/home/home.wxss */
+@import '../../views/conversation.wxss';
+
+.swiper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.swiper-item{
+	display: flex;
+}
+
+.center{
+	margin: auto;
+	padding: 50rpx;
+}

@@ -1,0 +1,7 @@
+/client/pages/test
+/client/config.js
+/server/config.js
+
+server/controllers/test.js
+client/plugins/weui-wxss/
+client/plugins/zanui-weapp/
