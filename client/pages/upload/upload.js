@@ -1,6 +1,7 @@
 const config = require('../../config')
 const Zan = require('../../plugins/zanui-weapp/dist/index')
 import { Conversation } from '../../models/conversation'
+const moment = require('../../plugins/moment.min')
 
 Page(Object.assign({}, Zan.TopTips, {
 	data: {
@@ -25,6 +26,12 @@ Page(Object.assign({}, Zan.TopTips, {
 	onContentChange(event) {
 		this.setData({
 			content: event.detail.value
+		})
+	},
+
+	onEnglishContentChange(event) {
+		this.setData({
+			englishContent: event.detail.value
 		})
 	},
 
@@ -74,13 +81,15 @@ Page(Object.assign({}, Zan.TopTips, {
 		})
 	},
 
-	// 确定
+	//确定
 	onConfirm() {
 		const _this = this
 		wx.showLoading({
 			title: '请稍后...',
 		})
-		let conversation = new Conversation(undefined, this.data.content, this.data.imageUrl)
+		const category = this.data.categories.find(c=>c.checked).name
+		let conversation = new Conversation(undefined, this.data.imageUrl, this.data.content,this.data.englishContent,category,moment())
+
 		wx.request({
 			url: config.service.uploadConversationUrl,
 			data: conversation,
@@ -111,6 +120,7 @@ Page(Object.assign({}, Zan.TopTips, {
 		const _this = this
 		this.setData({
 			content: null,
+			englishContent:null,
 			images: null,
 			uploadTask: null,
 			progress: null,

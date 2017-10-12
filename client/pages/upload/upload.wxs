@@ -1,6 +1,6 @@
 //确定按钮是否可用
-var isValid = function (content, imageUrl) {
-	return content && content.trim().length > 0 && imageUrl
+var isValid = function (content, imageUrl, switchValue, englishContent) {
+	return content && content.trim().length > 0 && imageUrl && (!switchValue || (switchValue && englishContent && englishContent.trim().length > 0))
 }
 
 var imageState = function (progress) {

@@ -36,7 +36,7 @@ async function newConversation(ctx, next) {
 //获取对话
 async function getConversations(ctx,next){
 	const indexId = ctx.request.body
-	await mysql(table).select()
+	await mysql(table).select().orderBy('id', 'desc')
 	.then(res=>ctx.state.data = res)
 }
 

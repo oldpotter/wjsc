@@ -1,14 +1,25 @@
 .conversation-container {
   border: 1rpx solid lightgray;
   border-radius: 25rpx;
-	padding: 15rpx;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  padding: 15rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .conversation-image {
 }
 
 .conversation-content {
+  margin-top: 15rpx;
+  text-align: center;
+}
+
+.conversation-tags {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: lightgray;
 }

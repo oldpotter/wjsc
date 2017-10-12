@@ -1,8 +1,11 @@
 class Conversation {
-	constructor(id, content, imageUrl) {
+	constructor(id, imageUrl, content, englishContent, category,date) {
 		this.id = id
-		this.content = content
 		this.imageUrl = imageUrl
+		this.content = content
+		this.englishContent = englishContent
+		this.category = category
+		this.date = date
 	}
 }
 

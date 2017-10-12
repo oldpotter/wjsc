@@ -50,7 +50,7 @@
     <view class='weui-cells weui-cells_after-title'>
       <view class='weui-cell'>
         <view class='weui-cell__bd'>
-          <textarea class='weui-textarea' bindinput='onContentChange' placeholder='请输入中文版内容' maxlength='500' style='height: 8.5em'>{{props.store.description}}</textarea>
+          <textarea class='weui-textarea' bindinput='onContentChange' placeholder='请输入中文版内容' maxlength='500' style='height: 8.5em' value='{{content}}'/>
           <!-- <text class='weui-textarea-counter'>0/500</text> -->
         </view>
       </view>
@@ -74,7 +74,7 @@
       <view class='weui-cells weui-cells_after-title'>
         <view class='weui-cell'>
           <view class='weui-cell__bd'>
-            <textarea class='weui-textarea' bindinput='onContentChange' placeholder='请输入英文版内容' maxlength='500' style='height: 8.5em'>{{props.store.description}}</textarea>
+            <textarea class='weui-textarea' bindinput='onEnglishContentChange' placeholder='请输入英文版内容' maxlength='500' style='height: 8.5em' value='{{englishContent}}'/>
             <!-- <text class='weui-textarea-counter'>0/500</text> -->
           </view>
         </view>
@@ -98,7 +98,7 @@
 
     <!-- 按钮 -->
     <view class='page__bd_spacing' style='margin-top:50rpx;'>
-      <button class='weui-btn' type='primary' bindtap='onConfirm' disabled='{{!upload.isValid(content,imageUrl)}}'>确定</button>
+      <button class='weui-btn' type='primary' bindtap='onConfirm' disabled='{{!upload.isValid(content,imageUrl,switchValue,englishContent)}}'>确定</button>
     </view>
 
   </view>

@@ -1,19 +1,13 @@
-const observer = require('../../plugins/observer').observer
-const extendObservable = require('../../plugins/mobx').extendObservable
 import { Conversation } from '../../models/conversation'
 import { contents, images } from '../../resources/resource'
 const config = require('../../config')
+const moment = require('../../plugins/moment.min')
 
-Page(observer({
-	props: {
-
-	},
+Page({
 
 	data: {
 		sizes: undefined,
 		conversations: undefined,
-		width: undefined,
-		height: undefined,
 		screenWidth: undefined,
 	},
 
@@ -26,12 +20,21 @@ Page(observer({
 		wx.request({
 			url: config.service.getConversationsUrl,
 			success: function (res) {
+				// console.log('res:',res)
 				if (res.data.code == 0) {
-					console.log(res)
-					const conversations = res.data.data.map(value=>JSON.parse(value.detail))
+					const conversations = res.data.data.map(value => {
+						let conversation = JSON.parse(value.detail)
+						conversation.date = moment(conversation.date)
+						return conversation
+						// let conversationEnglish = Object.assign({},conversation)
+						// conversationEnglish.isEnglish = true
+						// return [conversation,conversationEnglish]
+					})
+					// console.log('conversations:',conversations)
 					_this.setData({
 						conversations: conversations
 					})
+					// console.log(_this.data.conversations)
 				}
 			},
 			fail: function (res) { },
@@ -54,4 +57,4 @@ Page(observer({
 		})
 	}
 
-}))
+})

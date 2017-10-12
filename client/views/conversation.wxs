@@ -1,0 +1,16 @@
+var getChineseDate = function (date) {
+	date = getDate(Date.parse(date))
+	return date.toLocaleDateString()
+}
+
+var getEnglishDate = function (date) {
+	date = getDate(Date.parse(date))
+	return date.toDateString()
+}
+
+
+
+module.exports = {
+	getChineseDate: getChineseDate,
+	getEnglishDate: getEnglishDate
+}

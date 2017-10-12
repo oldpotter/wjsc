@@ -4,7 +4,8 @@
     "pages/categories/categories",
     "pages/me/me",
     "pages/category/category",
-    "pages/upload/upload"
+    "pages/upload/upload",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +24,7 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/me/me",
+        "pagePath": "pages/upload/upload",
         "text": "我"
       }
     ]
