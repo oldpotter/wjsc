@@ -1,5 +1,4 @@
 <import src='../../views/conversation.wxml' />
-
 <view class='page'>
   <swiper class='swiper'>
     <block wx:for='{{conversations}}'>

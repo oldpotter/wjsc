@@ -12,33 +12,16 @@ Page({
 	},
 
 	onLoad() {
-		const _this = this
 		//获取设备屏幕宽度
 		this.setData({
 			screenWidth: wx.getSystemInfoSync().screenWidth
 		})
-		wx.request({
-			url: config.service.getConversationsUrl,
-			success: function (res) {
-				// console.log('res:',res)
-				if (res.data.code == 0) {
-					const conversations = res.data.data.map(value => {
-						let conversation = JSON.parse(value.detail)
-						conversation.date = moment(conversation.date)
-						return conversation
-						// let conversationEnglish = Object.assign({},conversation)
-						// conversationEnglish.isEnglish = true
-						// return [conversation,conversationEnglish]
-					})
-					// console.log('conversations:',conversations)
-					_this.setData({
-						conversations: conversations
-					})
-					// console.log(_this.data.conversations)
-				}
-			},
-			fail: function (res) { },
-		})
+
+		this.getData()
+	},
+
+	onShow(){
+		// this.getData()
 	},
 
 
@@ -55,6 +38,27 @@ Page({
 			[paramWidth]: width,
 			[paramHeight]: height
 		})
-	}
+	},
+
+	getData(){
+		const _this = this
+		wx.request({
+			url: config.service.getConversationsUrl,
+			success: function (res) {
+				if (res.data.code == 0) {
+					const conversations = res.data.data.map(value => {
+						let conversation = JSON.parse(value.detail)
+						conversation.date = moment(conversation.date)
+						return conversation
+					})
+					_this.setData({
+						conversations: conversations
+					})
+					console.log(_this.data.conversations)
+				}
+			},
+			fail: function (res) { },
+		})
+	},
 
 })
