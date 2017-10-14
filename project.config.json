@@ -14,7 +14,7 @@
 	"projectname": "wujingshucha",
 	"condition": {
 		"weapp": {
-			"current": -1,
+			"current": 0,
 			"list": [
 				{
 					"id": -1,

@@ -1,8 +1,0 @@
-<import src='../../views/conversation.wxml'/>
-<view class='page'>
-	<view class='page__bd page__bd_spacing'>
-		<view wx:for='{{props.conversations}}' wx:for-item='conversation'>
-			<template is='conversation' data='{{...conversation}}'/>
-		</view>
-	</view>
-</view>
