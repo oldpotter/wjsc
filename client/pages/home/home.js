@@ -25,11 +25,12 @@ Page({
 	onShow() {
 		// this.getData()
 	},
+
 	getData() {
 		const _this = this
 		wx.request({
 			url: config.service.getConversationsUrl,
-			data: { indexId:34,quantity: 1 },
+			data: { indexId:undefined,quantity: 1 },
 			method: 'POST',
 			success: function (res) {
 				if (res.data.code == 0) {
@@ -79,9 +80,5 @@ Page({
 		}
 
 	},
-
-
-
-
 
 })

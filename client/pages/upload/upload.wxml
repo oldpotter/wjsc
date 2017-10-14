@@ -112,6 +112,32 @@
     </view>
 
 
+    <!-- 标签 -->
+    <view class="weui-cells__title">标签</view>
+    <view class="weui-cells weui-cells_after-title">
+      <checkbox-group bindchange='onTagsChange'>
+        <block wx:for='{{tags}}'>
+          <label class="weui-cell weui-check__label">
+            <view class='weui-cell__bd'>
+              <view class='weui-label'>{{item.value}}</view>
+            </view>
+
+            <view class='weui-cell__ft'>
+              <checkbox class='weui-check' value='{{item.value}}' checked='{{item.checked}}' />
+              <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+              </view>
+            </view>
+          </label>
+        </block>
+      </checkbox-group>
+			<view class="weui-cell weui-cell_link" bindtap='onAddTag'>
+        <view class="weui-cell__bd">添加标签</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+
     <!-- 按钮 -->
     <view class='page__bd_spacing' style='margin-top:50rpx;'>
       <button class='weui-btn' type='primary' bindtap='onConfirm' disabled='{{!upload.isValid(content,imageUrl,switchValue,englishContent,date)}}'>确定</button>

@@ -9,12 +9,14 @@ Page(Object.assign({}, Zan.TopTips, {
 		englishContent: undefined,//英语内容
 		images: undefined,//图片数组
 		date:moment(),
+	
 
 		switchValue: false,
 		uploadTask: undefined,
 		progress: undefined,
 		imageUrl: undefined,//上传后的图片地址
-		categories: [{ name: '每日对话', checked: true }, { name: '笑译', checked: false },]
+		categories: [{ name: '每日对话', checked: true }, { name: '笑译', checked: false },],
+		tags: [{ value: '标签1', checked: true }, { value: '标签2', checked: true }, { value: '标签3', checked: true },],
 	},
 
 	onUnload() {
@@ -160,4 +162,12 @@ Page(Object.assign({}, Zan.TopTips, {
 			[param2]: !_this.data.categories[1 - index].checked
 		})
 	},
+
+	//标签选择
+	onTagsChange(event){
+		
+	},
+
+	//添加标签
+	onAddTag(){},
 }))
