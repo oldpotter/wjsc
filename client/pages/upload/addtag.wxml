@@ -1,0 +1,17 @@
+ <wxs src='./addtag.wxs' module='addtag'/> 
+<view class='page'>
+  <view class='page__bd'>
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入标签" bindinput='onInputChange'></input>
+        </view>
+      </view>
+    </view>
+
+    <view class='page__bd_spacing' style='margin-top:30rpx;'>
+      <button class='weui-btn' type='primary' bindtap='onConfirm' disabled='{{!addtag.isValid(tag)}}'>确定</button>
+    </view>
+  </view>
+</view>

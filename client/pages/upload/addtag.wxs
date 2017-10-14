@@ -1,0 +1,7 @@
+var isValid = function (tag) {
+	return tag && tag.trim().length > 0
+}
+
+module.exports = {
+	isValid: isValid
+}

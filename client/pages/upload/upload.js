@@ -2,27 +2,45 @@ const config = require('../../config')
 const Zan = require('../../plugins/zanui-weapp/dist/index')
 import { Conversation } from '../../models/conversation'
 const moment = require('../../plugins/moment.min')
+const observer = require('../../plugins/observer').observer
+const app = getApp()
 
-Page(Object.assign({}, Zan.TopTips, {
+Page(Object.assign({}, Zan.TopTips, observer({
+	props: {
+		tags: [{ value: '爱情', checked: false }, { value: '事业', checked: false }, { value: '修身', checked: false }]
+	},
+
 	data: {
 		content: undefined,//中文内容
 		englishContent: undefined,//英语内容
 		images: undefined,//图片数组
-		date:moment(),
-	
+		date: moment(),
+
 
 		switchValue: false,
 		uploadTask: undefined,
 		progress: undefined,
 		imageUrl: undefined,//上传后的图片地址
 		categories: [{ name: '每日对话', checked: true }, { name: '笑译', checked: false },],
-		tags: [{ value: '标签1', checked: true }, { value: '标签2', checked: true }, { value: '标签3', checked: true },],
+		// tags: [{ value: '爱情', checked: false }, { value: '事业', checked: false }, { value: '修身', checked: false },],
 	},
 
 	onUnload() {
+		const _this = this
 		if (this.data.uploadTask) {
 			this.data.uploadTask.about()
 		}
+	},
+
+	onShow() {
+		if (app.tags) {
+			this.props.tags = app.tags
+		}
+		// console.log('tags:',this.props.tags)
+	},
+
+	onHide() {
+		app.tags = this.props.tags
 	},
 
 	// 输入内容
@@ -39,9 +57,9 @@ Page(Object.assign({}, Zan.TopTips, {
 	},
 
 	//日期
-	onDateChange(event){
+	onDateChange(event) {
 		this.setData({
-			date:event.detail.value
+			date: event.detail.value
 		})
 	},
 
@@ -97,8 +115,8 @@ Page(Object.assign({}, Zan.TopTips, {
 		wx.showLoading({
 			title: '请稍后...',
 		})
-		const category = this.data.categories.find(c=>c.checked).name
-		let conversation = new Conversation(undefined, this.data.imageUrl, this.data.content,this.data.englishContent,category,this.data.date)
+		const category = this.data.categories.find(c => c.checked).name
+		let conversation = new Conversation(undefined, this.data.imageUrl, this.data.content, this.data.englishContent, category, this.data.date,this.props.tags)
 
 		wx.request({
 			url: config.service.uploadConversationUrl,
@@ -130,7 +148,7 @@ Page(Object.assign({}, Zan.TopTips, {
 		const _this = this
 		this.setData({
 			content: null,
-			englishContent:null,
+			englishContent: null,
 			images: null,
 			uploadTask: null,
 			progress: null,
@@ -164,10 +182,22 @@ Page(Object.assign({}, Zan.TopTips, {
 	},
 
 	//标签选择
-	onTagsChange(event){
-		
+	onTagsChange(event) {
+		const _this = this
+		const indexs = event.detail.value
+		this.props.tags.forEach((tag, currentIndex) => {
+			_this.props.tags[currentIndex].checked = indexs.some(idx => idx == currentIndex)
+			// const param = `tags[${currentIndex}].checked`
+			// _this.setData({
+			// 	[param]: checked
+			// })
+		})
 	},
 
 	//添加标签
-	onAddTag(){},
-}))
+	onAddTag() {
+		wx.navigateTo({
+			url: `./addtag`,
+		})
+	},
+})))
