@@ -8,6 +8,7 @@ Page(Object.assign({}, Zan.TopTips, {
 		content: undefined,//中文内容
 		englishContent: undefined,//英语内容
 		images: undefined,//图片数组
+		date:moment(),
 
 		switchValue: false,
 		uploadTask: undefined,
@@ -35,13 +36,20 @@ Page(Object.assign({}, Zan.TopTips, {
 		})
 	},
 
+	//日期
+	onDateChange(event){
+		this.setData({
+			date:event.detail.value
+		})
+	},
+
 	//选择图片
 	onChooseImage() {
 		const _this = this
 		wx.chooseImage({
 			count: 1,
 			sizeType: ['compressed'],
-			sourceType: [],
+			sourceType: ['album'],
 			success: function (res) {
 				const size = res.tempFiles[0].size
 				if (size >= config.upload.chosenImageLimitSize * 100000) {
@@ -88,7 +96,7 @@ Page(Object.assign({}, Zan.TopTips, {
 			title: '请稍后...',
 		})
 		const category = this.data.categories.find(c=>c.checked).name
-		let conversation = new Conversation(undefined, this.data.imageUrl, this.data.content,this.data.englishContent,category,moment())
+		let conversation = new Conversation(undefined, this.data.imageUrl, this.data.content,this.data.englishContent,category,this.data.date)
 
 		wx.request({
 			url: config.service.uploadConversationUrl,

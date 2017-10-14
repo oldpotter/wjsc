@@ -43,20 +43,20 @@
       </view>
     </view>
 
-		
+
 
     <!-- 中文内容 -->
     <view class="weui-cells__title"></view>
     <view class='weui-cells weui-cells_after-title'>
       <view class='weui-cell'>
         <view class='weui-cell__bd'>
-          <textarea class='weui-textarea' bindinput='onContentChange' placeholder='请输入中文版内容' maxlength='500' style='height: 8.5em' value='{{content}}'/>
+          <textarea class='weui-textarea' bindinput='onContentChange' placeholder='请输入中文版内容' maxlength='500' style='height: 8.5em' value='{{content}}' />
           <!-- <text class='weui-textarea-counter'>0/500</text> -->
         </view>
       </view>
     </view>
 
-		<!-- 开关 -->
+    <!-- 开关 -->
     <view class="weui-cells__title"></view>
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_switch">
@@ -74,14 +74,14 @@
       <view class='weui-cells weui-cells_after-title'>
         <view class='weui-cell'>
           <view class='weui-cell__bd'>
-            <textarea class='weui-textarea' bindinput='onEnglishContentChange' placeholder='请输入英文版内容' maxlength='500' style='height: 8.5em' value='{{englishContent}}'/>
+            <textarea class='weui-textarea' bindinput='onEnglishContentChange' placeholder='请输入英文版内容' maxlength='500' style='height: 8.5em' value='{{englishContent}}' />
             <!-- <text class='weui-textarea-counter'>0/500</text> -->
           </view>
         </view>
       </view>
     </block>
 
-		<!-- 对话类别 -->
+    <!-- 对话类别 -->
     <view class="weui-cells__title">对话类别</view>
     <view class="weui-cells weui-cells_after-title">
       <radio-group bindchange="onRadioChange">
@@ -96,9 +96,25 @@
       </radio-group>
     </view>
 
+    <!-- 日期 -->
+    <view class="weui-cells__title"></view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">日期</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker mode="date" value="{{date}}" bindchange="onDateChange">
+            <view class="weui-input">{{upload.getDateString(date)}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+
     <!-- 按钮 -->
     <view class='page__bd_spacing' style='margin-top:50rpx;'>
-      <button class='weui-btn' type='primary' bindtap='onConfirm' disabled='{{!upload.isValid(content,imageUrl,switchValue,englishContent)}}'>确定</button>
+      <button class='weui-btn' type='primary' bindtap='onConfirm' disabled='{{!upload.isValid(content,imageUrl,switchValue,englishContent,date)}}'>确定</button>
     </view>
 
   </view>

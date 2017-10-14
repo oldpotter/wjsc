@@ -34,10 +34,14 @@ async function newConversation(ctx, next) {
 }
 
 //获取对话
-async function getConversations(ctx,next){
-	const indexId = ctx.request.body
-	await mysql(table).select().orderBy('id', 'desc')
-	.then(res=>ctx.state.data = res)
+async function getConversations(ctx, next) {
+	const { indexId, quantity } = ctx.request.body
+	// console.log(`indexId:${indexId},quantity:${quantity}`)
+	await mysql(table).select()
+		.offset(indexId)
+		.limit(quantity)
+		.orderBy('id', 'desc')
+		.then(res => ctx.state.data = res)
 }
 
 module.exports = {

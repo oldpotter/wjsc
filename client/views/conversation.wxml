@@ -1,28 +1,37 @@
 <wxs src='./conversation.wxs' module='conversation' />
 <template name='conversation'>
   <view class='conversation-container'>
-    <!-- 图片 -->
-    <image class='conversation-image' style='width:{{width}}px;height:{{height}}px' src='{{imageUrl}}' mode='aspectFit' bindload='onImageLoad' data-index='{{index}}'></image>
-    <!-- 内容 -->
-    <text class='conversation-content'>{{content}}</text>
-    <!-- tag -->
-    <view class='conversation-tags'>
-      <text class='conversation-category'>{{category}}</text>
-      <text class='conversation-date'>{{conversation.getChineseDate(date)}}</text>
+    <view class='conversation-top'>
+      <!-- 图片 -->
+      <image class='conversation-image' style='width:{{width}}px;height:{{height}}px' src='{{imageUrl}}' mode='aspectFill' bindload='onImageLoad' data-index='{{index}}'></image>
+
+      <!-- 内容 -->
+      <text class='conversation-content'>{{content}}</text>
+
+      <!-- tag -->
+      <view class='conversation-tags'>
+        <text class='conversation-category'>{{category}}</text>
+        <text class='conversation-date'>{{conversation.getChineseDate(date)}}</text>
+      </view>
     </view>
   </view>
 </template>
 
 <template name='conversation-english'>
   <view class='conversation-container'>
-    <!-- 图片 -->
-    <image class='conversation-image' style='width:{{width}}px;height:{{height}}px' src='{{imageUrl}}' mode='aspectFit' bindload='onImageLoad' data-index='{{index}}'></image>
-    <!-- 内容 -->
-    <text class='conversation-content'>{{englishContent}}</text>
-    <!-- tag -->
-    <view class='conversation-tags'>
-      <text class='conversation-category'>{{category}}</text>
-      <text class='conversation-date'>{{conversation.getEnglishDate(date)}}</text>
+    <view class='conversation-top'>
+      <!-- 图片 -->
+      <image class='conversation-image' style='width:{{width}}px;height:{{height}}px' src='{{imageUrl}}' mode='aspectFill' bindload='onImageLoad' data-index='{{index}}'></image>
+
+      <!-- 内容 -->
+      <text class='conversation-content'>{{englishContent}}</text>
+
+      <!-- tag -->
+      <view class='conversation-tags'>
+        <text class='conversation-category'>{{conversation.getEnglishCategory(category)}}</text>
+        <text class='conversation-date'>{{conversation.getEnglishDate(date)}}</text>
+      </view>
+
     </view>
   </view>
 </template>

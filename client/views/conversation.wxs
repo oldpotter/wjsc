@@ -8,9 +8,17 @@ var getEnglishDate = function (date) {
 	return date.toDateString()
 }
 
-
+var getEnglishCategory = function (category) {
+	switch(category){
+		case '每日对话':
+		return "Today's Talk"
+		case '笑译':
+		return "Happy Moment"
+	}
+}
 
 module.exports = {
 	getChineseDate: getChineseDate,
-	getEnglishDate: getEnglishDate
+	getEnglishDate: getEnglishDate,
+	getEnglishCategory: getEnglishCategory
 }

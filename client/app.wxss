@@ -3,11 +3,11 @@
 @import '/plugins/zanui-weapp/dist/index.wxss';
 
 .container {
+  position: absolute;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+  width: 100%;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
   box-sizing: border-box;
-} 
+	/* background: lightblue; */
+}

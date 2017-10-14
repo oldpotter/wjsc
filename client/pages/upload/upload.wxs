@@ -1,6 +1,6 @@
 //确定按钮是否可用
-var isValid = function (content, imageUrl, switchValue, englishContent) {
-	return content && content.trim().length > 0 && imageUrl && (!switchValue || (switchValue && englishContent && englishContent.trim().length > 0))
+var isValid = function (content, imageUrl, switchValue, englishContent, date) {
+	return content && content.trim().length > 0 && imageUrl && (!switchValue || (switchValue && englishContent && englishContent.trim().length > 0)) && date
 }
 
 var imageState = function (progress) {
@@ -11,6 +11,11 @@ var imageState = function (progress) {
 	}
 }
 
+var getDateString = function (date) {
+	date = getDate(Date.parse(date))
+	return date.toLocaleDateString()
+}
+
 var IMAGE_STATE_ERROR = 'IMAGE_STATE_ERROR'
 var IMAGE_STATE_UPLOADING = 'IMAGE_STATE_UPLOADING'
 
@@ -18,5 +23,6 @@ module.exports = {
 	isValid: isValid,
 	imageState: imageState,
 	IMAGE_STATE_ERROR: IMAGE_STATE_ERROR,
-	IMAGE_STATE_UPLOADING: IMAGE_STATE_UPLOADING
+	IMAGE_STATE_UPLOADING: IMAGE_STATE_UPLOADING,
+	getDateString: getDateString
 }

@@ -1,21 +1,19 @@
 <import src='../../views/conversation.wxml' />
-<view class='page'>
+<view class='container'>
+  <!-- conversation -->
   <swiper class='swiper'>
     <block wx:for='{{conversations}}'>
       <swiper-item class='swiper-item'>
-        <swiper class='swiper' vertical='true'>
-          <swiper-item class='swiper-item'>
-            <view class='center'>
-              <template is='conversation' data='{{index,...item}}' />
-            </view>
-          </swiper-item>
-          <swiper-item wx:if='{{item.englishContent}}' class='swiper-item'>
-            <view class='center'>
-              <template is='conversation-english' data='{{index,...item}}' />
-            </view>
-          </swiper-item>
-        </swiper>
+        <view class='center'>
+          <template is='conversation' data='{{index,...item}}' />
+        </view>
+      </swiper-item>
+      <swiper-item class='swiper-item' wx:if='{{item.englishContent}}' class='swiper-item'>
+        <view class='center'>
+          <template is='conversation-english' data='{{index,...item}}' />
+        </view>
       </swiper-item>
     </block>
   </swiper>
+
 </view>

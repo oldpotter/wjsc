@@ -29,7 +29,7 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "上传",
 					"pathName": "pages/upload/upload",
 					"query": ""
