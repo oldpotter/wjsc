@@ -7,7 +7,8 @@
     "pages/test/test",
     "pages/contact/contact",
     "pages/upload/addtag",
-    "pages/category/category"
+    "pages/category/category",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",

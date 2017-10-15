@@ -1,4 +1,5 @@
 /* pages/category/category.wxss */
+
 .category-container {
   margin-top: 20rpx;
   border: 1rpx solid lightgray;
@@ -7,7 +8,7 @@
   padding-top: 30rpx;
   padding-bottom: 30rpx;
   flex-direction: row;
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 .title {
@@ -16,4 +17,9 @@
 
 .access {
   margin-right: 30rpx;
+}
+
+.search {
+  width: 70rpx;
+  height: 70rpx;
 }

@@ -1,0 +1,9 @@
+var isValid = function (inputVal, tags) {
+	return inputVal.trim().length > 0 || tags.some(function (tag) {
+		return tag.checked
+	})
+}
+
+module.exports = {
+	isValid: isValid
+}

@@ -9,5 +9,11 @@ Page({
 		wx.navigateTo({
 			url: `../category/category?value=${value}`,
 		})
-	}
+	},
+
+	onClickSearch(){
+		wx.navigateTo({
+			url: '../search/search',
+		})
+	},
 })

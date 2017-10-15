@@ -36,7 +36,6 @@ Page(Object.assign({}, Zan.TopTips, observer({
 		if (app.tags) {
 			this.props.tags = app.tags
 		}
-		// console.log('tags:',this.props.tags)
 	},
 
 	onHide() {

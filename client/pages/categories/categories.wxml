@@ -6,5 +6,8 @@
         <view class="weui-cell__ft weui-cell__ft_in-access access"></view>
       </view>
     </view>
+    <view class="weui-footer weui-footer_fixed-bottom">
+      <image src='../../resources/search.png' class='search.png' bindtap='onClickSearch'></image>
+    </view>
   </view>
 </view>
