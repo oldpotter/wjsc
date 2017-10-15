@@ -36,5 +36,6 @@ router.post('/message', controllers.message.post)
 router.post('/upload_image', controllers.conversation.uploadImage)
 router.post('/upload_conversation', controllers.conversation.newConversation)
 router.post('/get_conversations', controllers.conversation.getConversations)
+router.post('/get_category', controllers.conversation.getCategory)
 
 module.exports = router

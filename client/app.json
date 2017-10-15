@@ -3,11 +3,11 @@
     "pages/home/home",
     "pages/categories/categories",
     "pages/me/me",
-    "pages/category/category",
     "pages/upload/upload",
     "pages/test/test",
     "pages/contact/contact",
-    "pages/upload/addtag"
+    "pages/upload/addtag",
+    "pages/category/category"
   ],
   "window": {
     "backgroundTextStyle": "light",

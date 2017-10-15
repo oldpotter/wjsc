@@ -44,8 +44,17 @@ async function getConversations(ctx, next) {
 		.then(res => ctx.state.data = res)
 }
 
+//获取某个类别的对话
+async function getCategory(ctx, next) {
+	const { category } = ctx.request.body
+	await mysql(table).select()
+		.whereRaw("detail->'$.category'=?", [category])
+		.then(res => ctx.state.data = res)
+}
+
 module.exports = {
 	uploadImage,
 	newConversation,
-	getConversations
+	getConversations,
+	getCategory
 }

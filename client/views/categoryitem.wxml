@@ -1,6 +1,0 @@
-<template name='category'>
-  <view class='container' bindtap='onClickCategory' data-index='{{index}}'>
-    <view class='title'>{{item}}</view>
-     <view class="weui-cell__ft weui-cell__ft_in-access access"></view> 
-  </view>
-</template>

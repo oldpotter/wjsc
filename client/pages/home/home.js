@@ -1,7 +1,7 @@
 import { Conversation } from '../../models/conversation'
 import { contents, images } from '../../resources/resource'
 const config = require('../../config')
-const moment = require('../../plugins/moment.min')
+const parse = require('../../utils/parse')
 
 Page({
 
@@ -34,11 +34,7 @@ Page({
 			method: 'POST',
 			success: function (res) {
 				if (res.data.code == 0) {
-					const conversations = res.data.data.map(value => {
-						let conversation = JSON.parse(value.detail)
-						conversation.date = moment(conversation.date)
-						return conversation
-					})
+					const conversations = parse.parseConverations(res.data.data)
 					_this.setData({
 						conversations: conversations
 					})

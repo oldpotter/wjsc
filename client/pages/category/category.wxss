@@ -1,4 +1,6 @@
-.container {
+/* pages/category/category.wxss */
+
+.conversation-container {
   margin-top: 20rpx;
   border: 1rpx solid lightgray;
   border-radius: 25rpx;
@@ -6,12 +8,5 @@
   padding-top: 30rpx;
   padding-bottom: 30rpx;
   flex-direction: row;
-}
-
-.title {
-  margin-left: 50rpx;
-}
-
-.access {
-  margin-right: 30rpx;
+  justify-content: space-between;
 }
