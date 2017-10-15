@@ -2,22 +2,20 @@ import { Conversation } from '../../models/conversation'
 import { contents, images } from '../../resources/resource'
 const config = require('../../config')
 const parse = require('../../utils/parse')
+const app = getApp()
 
 Page({
 
 	data: {
 		sizes: undefined,
 		conversations: undefined,
-		screenWidth: undefined,
+		
 		logoSize: undefined,
 		qrSize: undefined,
 	},
 
 	onLoad() {
-		//获取设备屏幕宽度
-		this.setData({
-			screenWidth: wx.getSystemInfoSync().screenWidth
-		})
+		
 
 		this.getData()
 	},
@@ -51,7 +49,7 @@ Page({
 		let height = event.detail.height
 		const ratio = width / height
 		const index = event.currentTarget.dataset.index
-		width = this.data.screenWidth * 0.8
+		width = app.screenWidth * 0.8
 		height = width / ratio
 		const paramWidth = `conversations[${index}].width`
 		const paramHeight = `conversations[${index}].height`

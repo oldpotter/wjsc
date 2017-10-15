@@ -1,7 +1,8 @@
 <!--pages/contact/contact.wxml-->
-<text>pages/contact/contact.wxml</text>
-    <!-- logo -->
-    <image class=' logo ' src='../../resources/page_logo.jpeg ' mode='aspectFit ' lazy-load='true ' style='width:{{logoSize.width}}px;height:{{logoSize.height}}px ' bindload='onImageLoad ' id='logo '></image>
+<view class='container' bindtap='onTap'>
+  <!-- logo -->
+  <image class='logo' src='../../resources/page_logo.jpeg' mode='aspectFit' lazy-load='true' style='width:{{logoSize.width}}px;height:{{logoSize.height}}px' bindload='onImageLoad' id='logo'></image>
 
-    <!-- qrcode -->
-    <image class='qr-code ' src='../../resources/qr_code.jpeg ' mode='aspectFit ' lazy-load='true ' style='width:{{qrSize.width}}px;height:{{qrSize.height}}px ' bindload='onImageLoad ' id='qrcode '></image>
+  <!-- qrcode -->
+  <image class='qr-code' src='../../resources/qr_code.jpeg' mode='aspectFit' lazy-load='true' style='width:{{qrSize.width}}px;height:{{qrSize.height}}px' bindload='onImageLoad' id='qrcode'></image>
+</view>

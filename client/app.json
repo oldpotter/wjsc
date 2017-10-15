@@ -2,7 +2,6 @@
   "pages": [
     "pages/home/home",
     "pages/categories/categories",
-    "pages/me/me",
     "pages/upload/upload",
     "pages/test/test",
     "pages/contact/contact",
@@ -25,10 +24,6 @@
       {
         "pagePath": "pages/categories/categories",
         "text": "分类"
-      },
-      {
-        "pagePath": "pages/upload/upload",
-        "text": "我"
       },
       {
         "pagePath": "pages/contact/contact",

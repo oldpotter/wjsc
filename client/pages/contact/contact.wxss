@@ -1,1 +1,19 @@
 /* pages/contact/contact.wxss */
+
+.logo {
+  position: absolute;
+  margin: auto;
+  top: 50rpx;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.qr-code {
+  position: absolute;
+  margin: auto;
+  bottom: 50rpx;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
