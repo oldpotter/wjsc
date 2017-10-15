@@ -1,17 +1,3 @@
 /* pages/home/home.wxss */
 @import '../../views/conversation.wxss';
 
-
-.swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-item {
-	display: flex;
-}
-
-.center{
-	margin: auto;
-	max-width: 90%;
-}

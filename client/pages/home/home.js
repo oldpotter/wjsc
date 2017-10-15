@@ -34,7 +34,7 @@ Page({
 			method: 'POST',
 			success: function (res) {
 				if (res.data.code == 0) {
-					const conversations = parse.parseConverations(res.data.data)
+					const conversations = parse.parseConversations(res.data.data)
 					_this.setData({
 						conversations: conversations
 					})
@@ -50,31 +50,15 @@ Page({
 		let width = event.detail.width
 		let height = event.detail.height
 		const ratio = width / height
-		const id = event.currentTarget.id
-		if (id == 'logo') {
-			width = this.data.screenWidth * 0.35
-			height = width / ratio
-			this.setData({
-				logoSize: { width, height }
-			})
-		} else if (id == 'qrcode') {
-			width = this.data.screenWidth * 0.15
-			height = width / ratio
-			this.setData({
-				qrSize: { width, height }
-			})
-		} else {
-			const index = event.currentTarget.dataset.index
-			width = this.data.screenWidth * 0.8
-			height = width / ratio
-			const paramWidth = `conversations[${index}].width`
-			const paramHeight = `conversations[${index}].height`
-			this.setData({
-				[paramWidth]: width,
-				[paramHeight]: height
-			})
-		}
-
+		const index = event.currentTarget.dataset.index
+		width = this.data.screenWidth * 0.8
+		height = width / ratio
+		const paramWidth = `conversations[${index}].width`
+		const paramHeight = `conversations[${index}].height`
+		this.setData({
+			[paramWidth]: width,
+			[paramHeight]: height
+		})
 	},
 
 })

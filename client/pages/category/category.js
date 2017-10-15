@@ -21,8 +21,8 @@ Page(Object.assign({}, Zan.TopTips, {
 			title: '请稍后...',
 		})
 		wx.request({
-			url: config.service.getCategoryUrl,
-			data: { category: _this.data.category },
+			url: _this.data.category == '全部' ? config.service.getConversationsUrl : config.service.getCategoryUrl,
+			data: _this.data.category == '全部' ? { indexId: undefined, quantity: 1000 } : { category: _this.data.category },
 			method: 'POST',
 			success: function (res) {
 				if (res.data.code == 0) {
@@ -37,6 +37,22 @@ Page(Object.assign({}, Zan.TopTips, {
 				_this.showZanTopTips('获取失败')
 			},
 		})
-	}
+	},
+
+	//图片加载
+	onImageLoad(event) {
+		let width = event.detail.width
+		let height = event.detail.height
+		const ratio = width / height
+		const index = event.currentTarget.dataset.index
+		width = this.data.screenWidth * 0.8
+		height = width / ratio
+		const paramWidth = `conversations[${index}].width`
+		const paramHeight = `conversations[${index}].height`
+		this.setData({
+			[paramWidth]: width,
+			[paramHeight]: height
+		})
+	},
 
 }))

@@ -1,14 +1,28 @@
 <!--pages/category/category.wxml-->
+<import src='../../views/conversation.wxml' />
 <import src="../../plugins/zanui-weapp/dist/toptips/index.wxml" />
 <!-- 错误提示 -->
 <template is="zan-toptips" data="{{ zanTopTips }}"></template>
 
-<view class='page'>
-  <view class='page__bd page__bd_spacing'>
-    <view wx:for='{{conversations}}'>
-      <view class='conversation-container'>
-         <view class='content'>{{item.content}}</view> 
-      </view>
-    </view>
-  </view>
+<view class='container'>
+  <swiper class='swiper' vertical='true'>
+    <block wx:for='{{conversations}}'>
+      <swiper-item class='swiper-item'>
+
+        <swiper class='swiper'>
+          <swiper-item class='swiper-item'>
+            <view class='center'>
+              <template is='conversation' data='{{index,...item}}' />
+            </view>
+          </swiper-item>
+          <swiper-item class='swiper-item' wx:if='{{item.englishContent}}'>
+            <view class='center'>
+              <template is='conversation' data='{{index,...item}}' />
+            </view>
+          </swiper-item>
+        </swiper>
+
+      </swiper-item>
+    </block>
+  </swiper>
 </view>

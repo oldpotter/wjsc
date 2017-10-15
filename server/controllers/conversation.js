@@ -49,6 +49,7 @@ async function getCategory(ctx, next) {
 	const { category } = ctx.request.body
 	await mysql(table).select()
 		.whereRaw("detail->'$.category'=?", [category])
+		.orderBy('id','desc')
 		.then(res => ctx.state.data = res)
 }
 
